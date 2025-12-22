@@ -135,3 +135,13 @@ SELECT vehicle_id, count(*) AS booking_count FROM bookings AS b
 GROUP BY b.vehicle_id 
 HAVING count(*) > 2;
 ```
+
+### some important SQL questions with answer from VEHICLE_RENTAL_SYSTEM:
+
+Question 1: What is a foreign key and why is it important in relational databases?
+
+```sql
+A foreign key is a column in one table that refers to the primary key of another table.
+It is important because it creates a relationship between tables and maintains data integrity.
+It ensures that related data is valid and consistent.
+```
