@@ -145,3 +145,35 @@ A foreign key is a column in one table that refers to the primary key of another
 It is important because it creates a relationship between tables and maintains data integrity.
 It ensures that related data is valid and consistent.
 ```
+
+
+```sql
+Question 2: What is the difference between WHERE and HAVING clauses in SQL?
+
+WHERE is used to apply conditions on individual rows.
+HAVING is used to apply conditions on grouped data.
+WHERE is used before GROUP BY.
+HAVING is used after GROUP BY.
+```
+
+
+```sql
+3. What is a primary key and its characteristics?
+
+A primary key is a column that uniquely identifies each record in a table.
+
+Characteristics:
+- It must be unique
+- It cannot be NULL
+- Only one primary key is allowed per table
+- Easier to find information
+```
+
+
+```sql
+**4. What is the difference between INNER JOIN and LEFT JOIN?
+
+INNER JOIN returns only matching records from both tables.
+LEFT JOIN returns all records from the left table and matching records from the right table.
+If there is no match, LEFT JOIN shows NULL values.
+```
