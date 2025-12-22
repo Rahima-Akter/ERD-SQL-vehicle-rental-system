@@ -1,8 +1,8 @@
-<!-- create database -->
+-- create database
 create database vehicle_rental_system
 
 
-<!-- user table -->
+-- user table
 create table users(
 user_id serial primary key,
 name varchar(30) not null,
@@ -25,7 +25,7 @@ insert into users (name, email, password, phone_number, role) values
 ('Henry cavil', 'henry.cavil@example.com', 'henrycavilpassword', '444-333-5555', 'Customer');
 
 
-<!-- vehicles table -->
+-- vehicles table
 create table vehicles(
 vehicle_id serial primary key,
 vehicle_name varchar(50) not null,
@@ -56,7 +56,7 @@ insert into vehicles (vehicle_name, vehicle_type, vehicle_model, registration_nu
 ('Toyota Camry', 'car', '2023 Hybrid', 'ABC7890', 55.00, 'rented');
 
 
-<!-- bookings table -->
+-- bookings table
 create table bookings(
 booking_id serial primary key,
 user_id int references users(user_id) on delete cascade,
@@ -83,8 +83,8 @@ insert into bookings(user_id, vehicle_id, rent_start_date, rent_end_date, bookin
 
 
 
-<!-- SQL Queries -->
-<!-- Query 1: (JOIN) Retrieve booking information along with:Customer name, Vehicle name -->
+-- SQL Queries
+-- Query 1: (JOIN) Retrieve booking information along with:Customer name, Vehicle name
 select b.booking_id, 
 name, vehicle_name,rent_start_date, rent_end_date,booking_status 
 from bookings as b 
@@ -93,17 +93,17 @@ inner join vehicles as v on b.vehicle_id = v.vehicle_id;
 
 
 
-<!--Query 2: (EXISTS) Find all vehicles that have never been booked.-->
+-- Query 2: (EXISTS) Find all vehicles that have never been booked
 select * from vehicles as v
 where not exists(select * from bookings as b where b.vehicle_id = v.vehicle_id);
 
 
 
-<!-- Query 3: (WHERE) Retrieve all available vehicles of a specific type (e.g. cars). -->
+-- Query 3: (WHERE) Retrieve all available vehicles of a specific type (e.g. cars)
 select * from vehicles where vehicle_type = 'car' and availability_status = 'available';
 
 
+-- Query 4: (GROUP BY and HAVING) Find the total number of bookings for each vehicle and display only those vehicles that have more than 2 bookings
 
-<!-- Query 4: (GROUP BY and HAVING) Find the total number of bookings for each vehicle and display only those vehicles that have more than 2 bookings. -->
 select vehicle_id, count(*) as booking_count from bookings as b
 group by b.vehicle_id having count(*) > 2;
